@@ -9,14 +9,10 @@ Kita telah diberikan catatan keuangan Amir dalam bentuk text biasa, dan kita dim
 
 */
 
-function deseralizedListObject(listHarga) {
+function deserializeListObject(listHarga) {
     let listHargaObject = {};
     listHarga.map(element => {
-        Object.keys(element).forEach(el => {
-            let elNama = element["nama"];
-            let elHarga = element["harga"];
-            listHargaObject[elNama] = elHarga
-        })
+        listHargaObject[element["nama"]] = element["harga"]
     })
     return listHargaObject;
 }
@@ -25,7 +21,7 @@ function jumlahTabungan(listHarga, history) {
     // Write your code here
     const splitHistory = history.split(".");
     let splitResultHistory = {};
-    let listHargaObject = deseralizedListObject(listHarga);
+    let listHargaObject = deserializeListObject(listHarga);
     splitHistory.map(e => {
         const splitElement = e.split("-");
         splitResultHistory[splitElement[0]] = splitElement[1]
