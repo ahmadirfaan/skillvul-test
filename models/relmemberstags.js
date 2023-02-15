@@ -1,17 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-    const tags = sequelize.define('tags', {
+    const relMemberTags = sequelize.define('relMemberTags', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        name: DataTypes.STRING,
+        members_id: DataTypes.INTEGER,
+        tags_id: DataTypes.INTEGER
     }, {
-        tableName: 'tags',
+        tableName: 'rel_members_tags',
         id: "id",
-        name: "name",
+        members_id: 'members_id',
+        tags_id: 'tags_id',
         createdAt: 'created_at',
         updatedAt: 'updated_at',
     });
-    return tags;
+    return relMemberTags;
 };

@@ -1,13 +1,15 @@
 const members = require('../models').members;
 const tags = require('../models').tags;
-const relMemberTags = require('../models').rel_member_tags;
+const relMemberTags = require('../models').relMemberTags
 const validator = require("../validator/validator_request");
 const bcrypt = require("bcrypt")
 const clientError = require('../exceptions/client_error.js');
 const authUseCase = require('./authorization_usecase');
 
 const getMemberById =  async (memberId) => {
-    return members.findByPk(memberId);
+    return members.findByPk(memberId, {
+        raw: true
+    });
 }
 
 module.exports = {
@@ -70,18 +72,18 @@ module.exports = {
             raw: true,
             nest: true
         });
-        const { count } = await relMemberTags.findAndCountAll({
+        const {count} = await relMemberTags.findAndCountAll({
             where: {
-                members: memberId,
-                tags: tag[0].id
+                members_id: memberId,
+                tags_id: tag[0].id
             },
         });
-        const isMaxMemberFree = member.type == "free" && count < 3
-        const isMaxMemberPaid = member.type == "paid" && count < 20
+        const isMaxMemberFree = member.type === "free" && count < 3
+        const isMaxMemberPaid = member.type === "paid" && count < 20
         if(isMaxMemberFree || isMaxMemberPaid) {
             relMemberTags.create({
-                tags: tag,
-                members: memberId
+                members_id: memberId,
+                tags_id: tag[0].id
             })
             return true;
         } else {
