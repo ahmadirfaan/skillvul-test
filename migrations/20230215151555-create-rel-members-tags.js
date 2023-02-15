@@ -36,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('tags');
+    await queryInterface.dropTable('rel_members_tags');
   }
 };
