@@ -1,3 +1,4 @@
+
 const Joi = require('joi');
 const InvariantError = require("../exceptions/invariant_error");
 
@@ -11,6 +12,16 @@ module.exports = {
             password: Joi.string().required(),
         })
         const validationResult = registerSchema.validate(payload);
+        if (validationResult.error) {
+            throw new InvariantError(validationResult.error.message);
+        }
+    },
+    validateLoginRequest(payload) {
+        const loginSchema = Joi.object({
+            username: Joi.string().required(),
+            password: Joi.string().required(),
+        })
+        const validationResult = loginSchema.validate(payload);
         if (validationResult.error) {
             throw new InvariantError(validationResult.error.message);
         }

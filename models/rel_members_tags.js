@@ -6,11 +6,11 @@ module.exports = (sequelize) => {
     });
     relMemberTags.associate = function(models) {
         relMemberTags.hasMany(models.members, {
-            foreignKey: 'member_id',
+            foreignKey: 'id',
             as: 'members',
         });
         relMemberTags.hasMany(models.tags, {
-            foreignKey: 'tag_id',
+            foreignKey: 'id',
             as: 'tags',
         });
     };
