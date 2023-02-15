@@ -1,6 +1,6 @@
 module.exports = (sequelize) => {
-    const relMemberTags = sequelize.define('rel_member_tags', {}, {
-        tableName: 'rel_member_tags',
+    const relMemberTags = sequelize.define('rel_members_tags', {}, {
+        tableName: 'rel_members_tags',
         createdAt: 'created_at',
         updatedAt: 'updated_at',
     });

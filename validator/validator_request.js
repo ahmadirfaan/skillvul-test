@@ -25,5 +25,14 @@ module.exports = {
         if (validationResult.error) {
             throw new InvariantError(validationResult.error.message);
         }
+    },
+    validateTagName(payload) {
+        const addTagSchema = Joi.object({
+            tagName: Joi.string().required(),
+        })
+        const validationResult = addTagSchema.validate(payload);
+        if (validationResult.error) {
+            throw new InvariantError(validationResult.error.message);
+        }
     }
 }
