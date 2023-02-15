@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('members', {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },

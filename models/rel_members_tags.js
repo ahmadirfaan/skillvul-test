@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
         });
         relMemberTags.hasMany(models.tags, {
             foreignKey: 'tag_id',
-            as: 'tag',
+            as: 'tags',
         });
     };
     relMemberTags.beforeCreate((r) => r.id = uuidv4());
