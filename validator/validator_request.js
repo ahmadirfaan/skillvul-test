@@ -6,6 +6,7 @@ module.exports = {
         const registerSchema = Joi.object({
             firstName: Joi.string().required(),
             lastName: Joi.string().required(),
+            age: Joi.number().integer().min(0).required(),
             username: Joi.string().required(),
             password: Joi.string().required(),
         })
