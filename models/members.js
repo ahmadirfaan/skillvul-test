@@ -10,10 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         username: DataTypes.STRING,
         password: DataTypes.STRING,
         type: DataTypes.STRING,
-        exp: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-        }
+        exp: DataTypes.INTEGER
     }, {
         tableName: 'members',
         id: "id",
